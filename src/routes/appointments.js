@@ -31,7 +31,6 @@ module.exports = (db, updateAppointment) => {
       setTimeout(() => response.status(500).json({}), 1000);
       return;
     }
-
     const { student, interviewer } = request.body.interview;
 
     db.query(
@@ -48,7 +47,7 @@ module.exports = (db, updateAppointment) => {
           updateAppointment(Number(request.params.id), request.body.interview);
         }, 1000);
       })
-      .catch(error => console.log(error));
+      .catch(error => error);
   });
 
   router.delete("/appointments/:id", (request, response) => {
